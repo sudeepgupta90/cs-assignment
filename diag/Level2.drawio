@@ -1,0 +1,261 @@
+<mxfile host="app.diagrams.net" modified="2025-01-27T10:00:00.000Z" agent="5.0" etag="ghi789" version="24.7.17" type="device">
+  <diagram name="Level2-Kubernetes-Deployment" id="level2-k8s">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Title -->
+        <mxCell id="title" value="Level 2: Kubernetes Deployment Architecture" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="20" width="400" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Kubernetes Cluster -->
+        <mxCell id="k8s-cluster" value="Kubernetes Cluster (Minikube)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="70" width="1500" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Namespaces -->
+        <mxCell id="mlops-ns" value="mlops Namespace" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="130" width="700" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="airflow-ns" value="airflow Namespace" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="800" y="130" width="300" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="monitoring-ns" value="monitoring Namespace" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="130" width="300" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- MLOps Namespace Components -->
+        <!-- MLflow Components -->
+        <mxCell id="mlflow-deployment" value="MLflow Deployment&#xa;mlops/mlflow:0.1.0" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="100" y="180" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="mlflow-service" value="mlflow Service&#xa;Port: 5000" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="100" y="260" width="140" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- PostgreSQL -->
+        <mxCell id="postgres-deployment" value="PostgreSQL Deployment&#xa;postgres:16" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="280" y="180" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="postgres-service" value="mlflow-pg Service&#xa;Port: 5432" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="280" y="260" width="140" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- MinIO -->
+        <mxCell id="minio-deployment" value="MinIO Deployment&#xa;minio/minio:latest" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="460" y="180" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="minio-service" value="minio Service&#xa;Port: 9000/9001" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="460" y="260" width="140" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Model Serving -->
+        <mxCell id="serving-dev-deployment" value="Model Serving Dev&#xa;mlops/serving:0.1.0&#xa;Stage: Staging" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="100" y="340" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="serving-prod-deployment" value="Model Serving Prod&#xa;mlops/serving:0.1.0&#xa;Stage: Production" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="280" y="340" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="serving-service" value="model-serving Service&#xa;Port: 8000" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="460" y="340" width="140" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Batch Job -->
+        <mxCell id="batch-cronjob" value="Batch CronJob&#xa;mlops/batch:0.1.0&#xa;Schedule: */30 * * * *" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="100" y="460" width="140" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- Secrets -->
+        <mxCell id="mlops-secrets" value="mlops-secrets&#xa;Secret" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="280" y="460" width="140" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Ingress -->
+        <mxCell id="mlops-ingress" value="MLOps Ingress&#xa;nginx" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="460" y="460" width="140" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Airflow Namespace Components -->
+        <mxCell id="airflow-scheduler-deployment" value="Airflow Scheduler&#xa;mlops/airflow:0.1.0" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="820" y="180" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="airflow-webserver-deployment" value="Airflow Webserver&#xa;mlops/airflow:0.1.0" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="820" y="260" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="airflow-postgres-deployment" value="Airflow PostgreSQL&#xa;postgres:16" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="820" y="340" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="airflow-redis-deployment" value="Airflow Redis&#xa;redis:7" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="820" y="420" width="140" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Monitoring Namespace Components -->
+        <mxCell id="prometheus-deployment" value="Prometheus&#xa;kube-prometheus-stack" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="180" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="grafana-deployment" value="Grafana&#xa;kube-prometheus-stack" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="260" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pushgateway-deployment" value="Pushgateway&#xa;prometheus-pushgateway" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="340" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="alertmanager-deployment" value="AlertManager&#xa;kube-prometheus-stack" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="420" width="140" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Service Monitors -->
+        <mxCell id="serving-servicemonitor" value="ServiceMonitor&#xa;model-serving" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="500" width="140" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Prometheus Rules -->
+        <mxCell id="prometheus-rules" value="PrometheusRule&#xa;mlops-rules" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="560" width="140" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Service Connections -->
+        <!-- MLflow to PostgreSQL -->
+        <mxCell id="conn1" value="Backend Store" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#82b366;strokeWidth=2;" edge="1" parent="1" source="mlflow-deployment" target="postgres-service">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- MLflow to MinIO -->
+        <mxCell id="conn2" value="Artifact Store" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#82b366;strokeWidth=2;" edge="1" parent="1" source="mlflow-deployment" target="minio-service">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Serving to MLflow -->
+        <mxCell id="conn3" value="Model Loading" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d6b656;strokeWidth=2;" edge="1" parent="1" source="serving-dev-deployment" target="mlflow-service">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn4" value="Model Loading" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d6b656;strokeWidth=2;" edge="1" parent="1" source="serving-prod-deployment" target="mlflow-service">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Batch to MLflow and MinIO -->
+        <mxCell id="conn5" value="Model Loading" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d6b656;strokeWidth=2;" edge="1" parent="1" source="batch-cronjob" target="mlflow-service">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn6" value="Data Access" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d6b656;strokeWidth=2;" edge="1" parent="1" source="batch-cronjob" target="minio-service">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Monitoring Connections -->
+        <mxCell id="conn7" value="Metrics Scraping" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#9673a6;strokeWidth=2;" edge="1" parent="1" source="prometheus-deployment" target="serving-prod-deployment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn8" value="Metrics Push" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#9673a6;strokeWidth=2;" edge="1" parent="1" source="batch-cronjob" target="pushgateway-deployment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn9" value="Metrics Query" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#9673a6;strokeWidth=2;" edge="1" parent="1" source="grafana-deployment" target="prometheus-deployment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Airflow to Training -->
+        <mxCell id="conn10" value="Training Trigger" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6c8ebf;strokeWidth=2;" edge="1" parent="1" source="airflow-scheduler-deployment" target="batch-cronjob">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Service Monitor to Serving -->
+        <mxCell id="conn11" value="Service Discovery" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#9673a6;strokeWidth=1;dashed=1;" edge="1" parent="1" source="serving-servicemonitor" target="serving-prod-deployment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- External Access -->
+        <mxCell id="external-access" value="External Access" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="600" width="1500" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Port Forwards -->
+        <mxCell id="port-forward-mlflow" value="kubectl port-forward svc/mlflow 5000:5000&#xa;http://localhost:5000" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="100" y="650" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="port-forward-serving" value="kubectl port-forward svc/model-serving 8000:8000&#xa;http://localhost:8000" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="320" y="650" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="port-forward-grafana" value="kubectl port-forward svc/kube-prom-grafana 3000:80&#xa;http://localhost:3000" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="540" y="650" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="port-forward-airflow" value="kubectl port-forward svc/airflow-webserver 8080:8080&#xa;http://localhost:8080" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="760" y="650" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="port-forward-minio" value="kubectl port-forward svc/minio 9001:9001&#xa;http://localhost:9001" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="980" y="650" width="200" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Ingress Routes -->
+        <mxCell id="ingress-routes" value="Ingress Routes (Demo)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="750" width="1500" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="ingress-mlflow" value="mlflow.local → mlflow:5000" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="100" y="800" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ingress-minio" value="minio.local → minio:9001" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="320" y="800" width="200" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Deployment Details -->
+        <mxCell id="deployment-details" value="Key Deployment Details" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="880" width="1500" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="details1" value="• All images built with Makefile and loaded into Minikube&#xa;• Secrets managed via Kubernetes Secrets&#xa;• ServiceMonitors enable Prometheus auto-discovery&#xa;• CronJob runs batch inference every 30 minutes&#xa;• Blue/Green deployment via model stages (Staging/Production)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="100" y="930" width="400" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="details2" value="• Airflow DAG orchestrates training → registry → deployment&#xa;• MLflow tracks experiments and manages model versions&#xa;• MinIO stores artifacts and batch data&#xa;• PostgreSQL stores MLflow metadata and Airflow state&#xa;• Prometheus scrapes metrics from serving endpoints" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="520" y="930" width="400" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="details3" value="• Grafana dashboards visualize metrics and alerts&#xa;• Pushgateway collects batch job metrics&#xa;• AlertManager sends notifications for drift/perf issues&#xa;• Ingress provides external access (demo setup)&#xa;• Namespaces provide logical separation" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="940" y="930" width="400" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- Legend -->
+        <mxCell id="legend-title" value="Connection Legend" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="180" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="legend1" value="Data Storage" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="210" width="150" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="legend1-line" value="" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1400" y="220" as="sourcePoint" />
+            <mxPoint x="1450" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend2" value="Model Operations" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="240" width="150" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="legend2-line" value="" style="endArrow=classic;html=1;strokeColor=#d6b656;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1400" y="250" as="sourcePoint" />
+            <mxPoint x="1450" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend3" value="Monitoring" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="270" width="150" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="legend3-line" value="" style="endArrow=classic;html=1;strokeColor=#9673a6;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1400" y="280" as="sourcePoint" />
+            <mxPoint x="1450" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend4" value="Orchestration" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="300" width="150" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="legend4-line" value="" style="endArrow=classic;html=1;strokeColor=#6c8ebf;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1400" y="310" as="sourcePoint" />
+            <mxPoint x="1450" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

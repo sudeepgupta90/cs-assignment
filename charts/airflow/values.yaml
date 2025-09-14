@@ -1,0 +1,55 @@
+# Configuration for the airflow dependency chart
+airflow:
+  enabled: true
+  
+  # Default Airflow repository and tag
+  defaultAirflowRepository: "mlops/airflow"
+  defaultAirflowTag: "0.1.0"
+
+  # Airflow image configuration
+  images:
+    airflow:
+      repository: "mlops/airflow"
+      tag: "0.1.0"
+      pullPolicy: "IfNotPresent"
+  
+  # Airflow version
+  airflowVersion: "3.0.6"
+  
+  # Webserver configuration
+  webserver:
+    defaultUser:
+      username: admin
+      password: admin
+  
+  # Scheduler configuration
+  scheduler:
+    enabled: true
+  
+  # Worker configuration - DISABLED for KubernetesExecutor
+  worker:
+    enabled: false
+  
+  # Executor configuration
+  executor: "KubernetesExecutor"
+  
+  # Airflow local settings
+  airflowLocalSettings: null
+  
+  # Extra environment variables
+  extraEnv: |
+    - name: AIRFLOW__CORE__DAGS_FOLDER
+      value: "/opt/airflow/dags"
+    - name: AIRFLOW__CORE__DAG_DISCOVERY_SAFE_MODE
+      value: "false"
+    - name: AIRFLOW__CORE__LOAD_EXAMPLES
+      value: "false"
+    - name: AIRFLOW__KUBERNETES_EXECUTOR__MULTI_NAMESPACE_MODE
+      value: "true"
+  
+  # DAGs configuration - since DAGs are built into the image, disable persistence
+  dags:
+    persistence:
+      enabled: false
+    gitSync:
+      enabled: false

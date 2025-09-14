@@ -1,0 +1,24 @@
+Assignment Overview
+Design and implement a scalable machine learning model lifecycle management
+solution that demonstrates your MLOps expertise and architectural thinking.
+Timeline- Duration**: 2-3 days
+Core Requirements
+Functional Requirements
+1. Model Training**: Automated training pipeline with experiment tracking
+2. Model Deployment**: Multi-environment deployment with serving capabilities
+3. Model Monitoring**: Performance monitoring and drift detection
+4. Model Management**: Versioning, registry, and governance workflows
+Technical Requirements
+1. Scalability**: Support multiple models and concurrent users
+2. Reliability**: Production-ready with appropriate error handling
+3. Observability**: Monitoring, logging, and alerting capabilities
+4. Security**: Authentication and access controls
+Constraints
+1. Must be containerized and cloud-deployable
+2. Include both real-time and batch inference options
+3. Provide a user interface or API for interaction
+4. Support at least one popular ML framework
+Bonus
+Design a workflow orchestrator (using Airflow/Kubeflow). Integrate MLflow with
+workflow orchestration, effectively mimicking model training/retraining automation
+in a production environment

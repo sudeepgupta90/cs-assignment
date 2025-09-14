@@ -1,0 +1,109 @@
+<mxfile host="app.diagrams.net" modified="2025-01-27T10:00:00.000Z" agent="5.0" etag="abc123" version="24.7.17" type="device">
+  <diagram name="Level0-MLOps-Architecture" id="level0-mlops">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Title -->
+        <mxCell id="title" value="Level 0: MLOps Architecture Overview" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="20" width="400" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Orchestration Layer -->
+        <mxCell id="orchestration" value="Orchestration Layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="80" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="airflow" value="Apache Airflow&#xa;(Scheduler + Webserver)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="70" y="160" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- ML Platform Layer -->
+        <mxCell id="mlplatform" value="ML Platform Layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="80" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="mlflow" value="MLflow&#xa;(Tracking + Registry)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="320" y="160" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Data Storage Layer -->
+        <mxCell id="datastorage" value="Data Storage Layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="80" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="postgres" value="PostgreSQL&#xa;(Metadata Store)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="570" y="160" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="minio" value="MinIO&#xa;(Artifact Store)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="570" y="240" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Model Operations Layer -->
+        <mxCell id="modelops" value="Model Operations Layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="800" y="80" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="training" value="Model Training&#xa;(Containerized)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="820" y="160" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="serving" value="Model Serving&#xa;(Dev/Prod)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="820" y="240" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="batch" value="Batch Inference&#xa;(CronJob)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="820" y="320" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Monitoring Layer -->
+        <mxCell id="monitoring" value="Monitoring Layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="400" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="prometheus" value="Prometheus&#xa;(Metrics)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="70" y="480" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="grafana" value="Grafana&#xa;(Dashboards)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="70" y="560" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Security Layer -->
+        <mxCell id="security" value="Security Layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="400" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="secrets" value="K8s Secrets&#xa;(Credentials)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="320" y="480" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="namespaces" value="Namespaces&#xa;(Isolation)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="320" y="560" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- External Interfaces -->
+        <mxCell id="external" value="External Interfaces" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="400" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="api" value="REST API&#xa;(Predictions)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="570" y="480" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ui" value="Web UI&#xa;(MLflow/Airflow)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="570" y="560" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Kubernetes Platform -->
+        <mxCell id="k8s" value="Kubernetes Platform (Minikube)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="680" width="920" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Key Flows -->
+        <mxCell id="flow1" value="Training Pipeline" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d79b00;strokeWidth=2;" edge="1" parent="1" source="airflow" target="training">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flow2" value="Model Registry" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d79b00;strokeWidth=2;" edge="1" parent="1" source="training" target="mlflow">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flow3" value="Model Serving" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d79b00;strokeWidth=2;" edge="1" parent="1" source="mlflow" target="serving">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flow4" value="Monitoring" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d79b00;strokeWidth=2;" edge="1" parent="1" source="serving" target="prometheus">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

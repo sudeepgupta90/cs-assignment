@@ -1,0 +1,18 @@
+kube-prometheus-stack:
+  enabled: true
+  serviceMonitorSelectorNilUsesHelmValues: false
+  # prometheus:
+  #   prometheusSpec:
+  #     # Use a newer Prometheus version that better supports EndpointSlice
+  #     image:
+  #       repository: quay.io/prometheus/prometheus
+  #       tag: v2.54.1
+  #     # Configure Prometheus to use EndpointSlice instead of deprecated Endpoints API
+  #     additionalScrapeConfigs:
+  #       - job_name: 'kubernetes-endpoints-endpointslice'
+  #         kubernetes_sd_configs:
+  #           - role: endpointslice
+  #         relabel_configs:
+  #           - source_labels: [__meta_kubernetes_endpointslice_name]
+  #             action: keep
+  #             regex: '.*'

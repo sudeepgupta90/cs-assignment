@@ -1,0 +1,6 @@
+dependencies:
+- name: airflow
+  repository: https://airflow.apache.org
+  version: 1.18.0
+digest: sha256:8f81e1bd53765fdd1dcb72d2eb77e366c8dfe524beae86c94b25b7ccc6056b88
+generated: "2025-09-13T18:27:39.224275+05:30"

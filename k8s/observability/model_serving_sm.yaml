@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata: 
+  name: model-serving
+  namespace: mlops
+  labels:
+    release: kube-prom
+spec:
+  selector:
+    matchLabels: { app: model-serving }
+  namespaceSelector:
+    matchNames: ["mlops"]
+  endpoints:
+  - port: http
+    interval: 15s

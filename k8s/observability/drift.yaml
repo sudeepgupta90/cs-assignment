@@ -1,0 +1,23 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata: 
+  name: mlops-rules
+  namespace: mlops
+  labels:
+    release: kube-prom
+spec:
+  groups:
+  - name: serving.rules
+    rules:
+    - alert: HighP95Latency
+      expr: histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket{job="model-serving"}[5m])) by (le)) > 0.5
+      for: 5m
+      labels: { severity: warning }
+      annotations:
+        description: P95 latency of serving pod > 500ms for 5m
+    - alert: HighDriftPSI
+      expr: avg_over_time(batch_feature_drift_psi[1h]) > 0.2
+      for: 10m
+      labels: { severity: critical }
+      annotations:
+        description: Feature drift PSI > 0.2 over last hour

@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata: { name: batch-infer, namespace: mlops }
+spec:
+  schedule: "*/30 * * * *"  # every 30 minutes
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          annotations:
+            sidecar.istio.io/inject: "false"
+        spec:
+          restartPolicy: OnFailure
+          containers:
+          - name: batch
+            image: mlops/batch:0.1.0
+            env:
+            - { name: MLFLOW_TRACKING_URI, value: http://mlflow.mlops:5000 }
+            - { name: MODEL_NAME, value: demo-classifier }
+            - { name: MODEL_STAGE, value: Production }
+            - { name: MLFLOW_S3_ENDPOINT_URL, value: http://minio.mlops:9000 }
+            - { name: AWS_ACCESS_KEY_ID, valueFrom: { secretKeyRef: { name: mlops-secrets, key: AWS_ACCESS_KEY_ID } } }
+            - { name: AWS_SECRET_ACCESS_KEY, valueFrom: { secretKeyRef: { name: mlops-secrets, key: AWS_SECRET_ACCESS_KEY } } }
+            - { name: PUSHGATEWAY_URL, value: http://pushgateway-prometheus-pushgateway.monitoring.svc.cluster.local:9091 }

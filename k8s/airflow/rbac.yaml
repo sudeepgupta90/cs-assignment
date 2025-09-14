@@ -1,0 +1,43 @@
+# Role in mlops namespace for pod creation and management
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: airflow-pod-manager
+  namespace: mlops
+rules:
+# Permissions to create, get, list, watch, and delete pods in mlops namespace
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["create", "get", "list", "watch", "delete"]
+# Permissions to get pod logs in mlops namespace
+- apiGroups: [""]
+  resources: ["pods/log"]
+  verbs: ["get", "list"]
+# Permissions to get events in mlops namespace
+- apiGroups: [""]
+  resources: ["events"]
+  verbs: ["get", "list", "watch"]
+---
+# RoleBinding in mlops namespace
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: airflow-pod-manager
+  namespace: mlops
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: airflow-pod-manager
+subjects:
+- kind: ServiceAccount
+  name: airflow-scheduler
+  namespace: airflow
+- kind: ServiceAccount
+  name: airflow-worker
+  namespace: airflow
+- kind: ServiceAccount
+  name: airflow-api-server
+  namespace: airflow
+- kind: ServiceAccount
+  name: airflow-dag-processor
+  namespace: airflow
