@@ -61,6 +61,6 @@ Step-12: Deploy Airflow
 
 helm upgrade --install airflow . -n airflow -f values.yaml --set airflowPodAnnotations.random=r$(uuidgen)
 
-Step-13: Trigger the prod dag
+Step-13: (Bonus) Trigger the prod dag
 
 The prod dag will run and promote the model to production in mlflow which in turn will trigger the model serving prod deployment in mlops namespace to complete the cycle.

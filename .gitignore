@@ -1,1 +1,3 @@
 .DS_STORE
+*tgz
+venv/
